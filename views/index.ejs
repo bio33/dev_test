@@ -1,0 +1,36 @@
+<<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <meta charset="utf-8">
+    <title> Home Page</title>
+  </head>
+  <body>
+    <h1 > Enter a product Name </h1>
+    <input type="text" id="product_name"></input>
+    <button id="button">Submit</button>
+
+    <script>
+    $(document).on("click","#button",()=>{
+      var product_name = document.getElementById("product_name").value;
+      var data = {name:product_name}
+
+      $.ajax({
+          type:"GET",
+          url:"/price",
+          data: data,
+          success: (res)=>{
+              console.log(res)
+          },
+          error:(err)=>{
+            console.log(err)
+          }
+
+
+      });
+
+    })
+
+    </script>
+  </body>
+</html>
