@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
@@ -9,20 +9,23 @@
     <h1 > Enter a product Name </h1>
     <input type="text" id="product_name"></input>
     <button id="button">Submit</button>
-
+    <div id="d1">
+      <h3 id="lowest_price"> </h3>
+    </div>
     <script>
     $(document).on("click","#button",()=>{
       var product_name = document.getElementById("product_name").value;
-      var data = {name:product_name}
+      var pro = {name:product_name}
 
       $.ajax({
-          type:"GET",
-          url:"/price",
-          data: data,
-          success: (res)=>{
+          'type':"GET",
+          'url':"/price",
+          'data': pro,
+          'success': (res)=>{
               console.log(res)
+              $("#lowest_price").text(res.salePrice)
           },
-          error:(err)=>{
+          'error':(err)=>{
             console.log(err)
           }
 
